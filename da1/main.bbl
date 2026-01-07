@@ -1,0 +1,51 @@
+\begin{thebibliography}{10}
+
+\bibitem{kaggle_india_renewables}
+Chris~Jaimy Antony.
+\newblock India renewable energy dataset.
+\newblock Kaggle, 2024.
+
+\bibitem{mongabay_droughts}
+H.~Bloomfield et~al.
+\newblock Historical climate data helps predict renewable energy drought events.
+\newblock {\em Mongabay India}, September 2025.
+
+\bibitem{grid_change_point}
+P.~Bouman et~al.
+\newblock Acquiring better load estimates by combining anomaly and change point detection in power grid time-series measurements, 2024.
+
+\bibitem{era5}
+{Copernicus Climate Change Service}.
+\newblock Era5 hourly data on single levels from 1940 to present.
+\newblock Climate Data Store, 2024.
+
+\bibitem{iot_wind_arima}
+M.~Huda et~al.
+\newblock Combining iot and time series model for minute-level outlier detection in wind speed forecasting.
+\newblock {\em UIN Malang Journal of Mathematics}, 6(2), 2025.
+
+\bibitem{cnnlstm_solar}
+A.~Ladjal et~al.
+\newblock Hybrid deep learning cnn-lstm model for forecasting solar direct normal irradiance.
+\newblock {\em Nature Scientific Reports}, 15:11845, 2025.
+
+\bibitem{eu_space_time}
+M.~Marques et~al.
+\newblock Driving sustainable development from fossil to renewable: A space--time analysis of electricity generation across the eu-28.
+\newblock {\em MDPI Sustainability}, 17(23):10620, 2025.
+
+\bibitem{stl_smartgrid}
+R.~Miller and J.~Smith.
+\newblock Time series anomaly detection for smart grids: A survey.
+\newblock {\em IEEE Transactions on Smart Grid}, 12(4), 2021.
+
+\bibitem{india_renewables}
+{Ministry of New and Renewable Energy}.
+\newblock Annual report 2024-25.
+\newblock Technical report, Government of India, 2025.
+
+\bibitem{lead_anomaly}
+V.~Prabhu et~al.
+\newblock Generative adversarial network with soft-dynamic time warping and parallel reconstruction for energy time series anomaly detection, 2024.
+
+\end{thebibliography}

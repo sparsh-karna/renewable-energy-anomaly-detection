@@ -1,0 +1,148 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{attachfile2}  % For embedding CSV file
+
+\begin{document}
+
+% Combined logo and title block on same page
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{university_logo.png}\\[0.5cm]
+    
+    {\LARGE \textbf{DA-1: Anomaly Detection in Hybrid Renewable Energy Generation}}\\[0.5cm]
+    
+    {\large Sparsh Karna (23BDS1172)}\\[0.2cm]
+    {\large Lavanaya Malhotra (23BDS1169)}\\[0.3cm]
+    
+    {}
+\end{center}
+
+
+\section{Problem Statement}
+India has rapidly expanded its renewable energy capacity, with large-scale deployment of both wind and solar power across multiple states.\cite{india_renewables} Despite this growth, recent studies report multi-day periods during which wind speeds and solar irradiance simultaneously drop to unusually low levels, creating so-called ``renewable energy droughts'' that threaten grid stability.\cite{mongabay_droughts} 
+
+Existing work largely focuses on forecasting either wind or solar output in isolation, or on detecting anomalies in electricity consumption rather than generation.\cite{cnnlstm_solar,stc_eu} There is currently no publicly available system that detects and explains \emph{combined} anomalies in hybrid wind--solar generation using open meteorological and capacity datasets, creating a clear gap for data-driven anomaly detection focused on grid reliability.\cite{lead_anomaly,grid_change_point}
+
+\section{Literature Survey}
+
+A comprehensive literature review of 20 peer-reviewed journal papers from 2023-2025 has been conducted, covering renewable energy anomaly detection, hybrid wind-solar forecasting, and time series methods. The complete survey includes detailed columns: paper title, year \& publisher, problem statement, methodology/algorithm, advantages, evaluation metrics used, and limitations.
+
+\vspace{0.3cm}
+
+\noindent A summary table of the surveyed papers is attached as a CSV file for reference:\newline
+\vspace{0.3cm}
+
+\noindent The survey covers 20 papers from premier journals including:
+\begin{itemize}
+    \item IEEE Transactions (Power Systems, Sustainable Energy, Power Electronics, Industrial Electronics, Power Delivery)
+    \item ScienceDirect journals (Energy, Applied Energy, Renewable Energy, Expert Systems with Applications, Ocean Engineering)
+    \item MDPI (Sensors, Sustainability)
+    \item Elsevier (Renewable and Sustainable Energy Reviews, International Journal of Forecasting)
+\end{itemize}
+
+Key findings include trends toward transformer-based models (2024-2025), ensemble methods for anomaly detection, and emerging applications of large language models for time series analysis. The survey identifies a clear gap: limited research on combined wind-solar anomaly detection compared to single-source forecasting.
+
+\section{Datasets Chosen and Description}
+
+\subsection{India Renewable Energy Capacity Dataset (Primary)}
+The primary dataset is a publicly available India renewable energy dataset that reports installed capacity for multiple sources (including solar and wind) at the state or regional level over several years.\cite{kaggle_india_renewables} It is provided in CSV format and typically includes attributes such as state name, year, technology (solar, wind, etc.), and installed capacity in megawatts.\cite{kaggle_india_renewables} 
+
+This dataset is chosen because it:
+\begin{itemize}
+    \item Covers multiple Indian states, allowing spatial analysis of hybrid renewable behavior.\cite{kaggle_india_renewables}
+    \item Distinguishes between solar and wind capacity, which is essential for modeling their joint contribution to total generation.\cite{kaggle_india_renewables}
+    \item Is openly accessible, making the work reproducible and compliant with the ``no synthetic data as primary source'' requirement.\cite{kaggle_india_renewables}
+\end{itemize}
+
+\subsection{ERA5 Reanalysis Meteorological Data (Supplementary)}
+ERA5 is a global atmospheric reanalysis product that provides hourly estimates of many climate variables, including wind speed at different heights, surface solar radiation, temperature, and surface pressure on a regular spatial grid.\cite{era5} For this project, ERA5 is used to obtain:
+\begin{itemize}
+    \item Wind speed (e.g., at 10m and 100m) over Indian regions with significant wind farms.
+    \item Shortwave solar radiation incident at the surface, approximating potential solar generation.
+\end{itemize}
+These variables are extracted and spatially aggregated to approximate weather conditions for each state or region corresponding to the capacity dataset.\cite{era5}
+
+ERA5 is selected because it:
+\begin{itemize}
+    \item Offers long-term, consistent, and quality-controlled meteorological data suitable for time series analysis.\cite{era5}
+    \item Is openly accessible via an API, supporting fully reproducible workflows.\cite{era5}
+    \item Enables direct linkage between observed weather patterns and detected generation anomalies.\cite{grid_change_point}
+\end{itemize}
+
+\subsection{National/Regional Generation Statistics (Optional)}
+If available, monthly or hourly renewable generation statistics from national or regional sources (for example, public reports from energy ministries or system operators) can be integrated to calibrate or validate the relationship between installed capacity, weather conditions, and realized output.\cite{eu_space_time,lead_anomaly} These statistics help ground the anomaly detection in realistic generation patterns rather than capacity alone.\cite{eu_space_time}
+
+\section{Proposed Methodology}
+
+\subsection*{Phase 1: Data Integration and Exploratory Data Analysis}
+\begin{itemize}
+    \item Merge the India renewable capacity dataset with ERA5 meteorological variables by state/region and time index.\cite{kaggle_india_renewables,era5}
+    \item Compute normalized generation proxies using capacity factors derived from installed capacity and relevant weather indicators (e.g., wind speed, solar radiation).\cite{lead_anomaly}
+    \item Identify weather patterns correlated with low wind and low solar periods through correlation analysis and descriptive statistics.\cite{grid_change_point}
+    \item Visualize:
+    \begin{itemize}
+        \item Temporal trends of wind, solar, and combined hybrid generation proxies.
+        \item Spatial heatmaps of states experiencing frequent low-output events.
+        \item Scatter plots relating weather variables to capacity factors.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Phase 2: Baseline Anomaly Detection}
+\begin{itemize}
+    \item Apply statistical methods such as Z-score, interquartile range (IQR), and seasonal-trend decomposition using Loess (STL) to isolate seasonal components and inspect anomalous residuals.\cite{stl_smartgrid}
+    \item Use unsupervised machine learning algorithms:
+    \begin{itemize}
+        \item Isolation Forest for multivariate anomaly scoring.\cite{lead_anomaly}
+        \item Local Outlier Factor (LOF) to capture local density deviations.
+        \item K-means clustering to group typical vs.\ atypical states of the system.
+    \end{itemize}
+    \item Fit classical time series models (e.g., ARIMA) to capacity-factor series and treat large residuals as anomaly candidates.\cite{iot_wind_arima}
+    \item Evaluate performance using Precision, Recall, and F1-score on labeled or synthetically injected anomalies that mimic known drought-like behavior.\cite{lead_anomaly,grid_change_point}
+\end{itemize}
+
+\subsection*{Phase 3: Advanced Models and Ensembling}
+\begin{itemize}
+    \item Train an LSTM-based autoencoder on periods considered ``normal'' to reconstruct multivariate time series of wind and solar proxies, flagging time windows with high reconstruction error as anomalies.\cite{lead_anomaly}
+    \item Implement a hybrid CNN--LSTM architecture where CNN layers extract spatial or short-term patterns from stacked weather and proxy signals, and LSTM layers model longer temporal dependencies.\cite{cnnlstm_solar}
+    \item Design sequential ensemble stages inspired by recent power-grid anomaly research:
+    \begin{itemize}
+        \item Stage 1: Use change point detection (e.g., binary segmentation) to identify long-duration droughts in the combined series.\cite{grid_change_point}
+        \item Stage 2: Apply statistical process control (SPC) or residual-based detectors on the remaining segments to capture shorter anomalies.\cite{grid_change_point}
+    \end{itemize}
+    \item Integrate explainability by applying SHAP or LIME to key models, quantifying how meteorological features (e.g., wind speed, radiation, pressure) contribute to anomaly scores and classifications.\cite{lead_anomaly}
+\end{itemize}
+
+\subsection*{Phase 4: Validation and Documentation}
+\begin{itemize}
+    \item Perform cross-validation across states or regions, training models on a subset of regions and testing on unseen ones to assess generalization.\cite{eu_space_time}
+    \item Conduct sensitivity analysis on important hyperparameters (e.g., anomaly thresholds, window lengths, number of latent dimensions in autoencoders).\cite{lead_anomaly}
+    \item Develop case studies around historically significant events, such as monsoon-related low-output periods, to qualitatively evaluate model behavior.\cite{mongabay_droughts}
+    \item Document all steps in a reproducible manner using version-controlled notebooks and scripts, suitable for inclusion in the DA-1 report and future research papers.\cite{lead_anomaly}
+\end{itemize}
+
+\section{Expected Outcomes and Deliverables}
+
+\subsection*{Expected Outcomes}
+\begin{itemize}
+    \item A working anomaly detection pipeline capable of identifying hybrid wind--solar drought events at regional level using publicly available data.\cite{lead_anomaly,grid_change_point}
+    \item Quantitative evidence (e.g., F1-scores and case studies) demonstrating how combined analysis of capacity, weather, and anomalies reveals grid-relevant risks that single-source models overlook.\cite{lead_anomaly}
+    \item Interpretable explanations linking detected anomalies to concrete meteorological drivers, such as persistent low wind regimes or reduced solar irradiance during specific synoptic patterns.\cite{mongabay_droughts,era5}
+\end{itemize}
+
+\subsection*{Deliverables}
+\begin{itemize}
+    \item A DA-1 written report containing the problem statement, dataset descriptions, literature survey, methodology, and results, formatted according to course guidelines.
+    \item A set of Jupyter notebooks implementing data preprocessing, exploratory analysis, baseline models, advanced models, and evaluation.\cite{lead_anomaly}
+    \item A modular Python codebase (e.g., functions for loading data, computing capacity factors, fitting models, and generating anomaly timelines) organized to support reuse and extension.
+    \item Visual artifacts such as time series plots, heatmaps, and anomaly timelines that clearly communicate key findings to technical and non-technical audiences.
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
