@@ -1,0 +1,39 @@
+* text=auto
+
+# Python
+*.py text eol=lf
+*.ipynb text merge=nbmerge
+*.pyw text eol=lf
+
+# Data formats
+*.csv text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+*.rst text eol=lf
+
+# Binary files
+*.npz binary
+*.npy binary
+*.h5 binary
+*.pkl binary
+*.pickle binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+
+# Git
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# OS
+.DS_Store binary
+
+# Don't merge conflict markers in notebooks
+*.ipynb merge=union
