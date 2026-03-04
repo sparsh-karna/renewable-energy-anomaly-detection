@@ -1,0 +1,47 @@
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Data files (too large for GitHub)
+MAUS/Data/Raw_data/
+MAUS/Data/IBI_sequence/
+MAUS/Subjective_rating/
+MAUS/preprocessed/
+MAUS/MAUS_Documentation.pdf
+
+# Large files
+*.csv
+*.npy
+*.npz
+*.h5
+*.pkl
+
+# Project-specific
+.env
+config_local.py
