@@ -1,0 +1,89 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{strang2014ht}
+\citation{hart1988development}
+\citation{maus2022}
+\citation{gjoreski2017monitoring}
+\citation{zander2016towards}
+\citation{zhang2019hierarchical}
+\citation{gjoreski2017monitoring}
+\citation{studer2019classifying}
+\citation{sarkar2020self}
+\citation{hoarfrost2022}
+\citation{vovk2005algorithmic,angelopoulos2021gentle}
+\citation{romano2020classification}
+\citation{lu2022fair}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{I}{1}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{1}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{II}{1}{Related Work}{section.2}{}}
+\citation{maus2022}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Dataset and Preprocessing}{2}{section.3}\protected@file@percent }
+\newlabel{sec:dataset}{{III}{2}{Dataset and Preprocessing}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}MAUS Dataset}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Signal Preprocessing}{2}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Feature Extraction}{2}{section.4}\protected@file@percent }
+\newlabel{sec:features}{{IV}{2}{Feature Extraction}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Algorithm 1: Statistical + Spectral Features (52-d)}{2}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces PCA projections of the two feature spaces. Algorithm 1 (statistical+spectral, 52-d) and Algorithm 2 (DWT, 120-d) capture complementary structure in the 3-class workload embedding.}}{2}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:pca}{{1}{2}{PCA projections of the two feature spaces. Algorithm 1 (statistical+spectral, 52-d) and Algorithm 2 (DWT, 120-d) capture complementary structure in the 3-class workload embedding}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Algorithm 2: DWT Features (120-d)}{2}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Combined Feature Vector}{2}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Methodology}{2}{section.5}\protected@file@percent }
+\newlabel{sec:method}{{V}{2}{Methodology}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Baseline Shallow Classifiers}{2}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Proposed Method: ResNet1D with Conformal Prediction}{2}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {V-B}1}Architecture}{2}{subsubsection.5.2.1}\protected@file@percent }
+\citation{romano2020classification}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {V-B}2}Training}{3}{subsubsection.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {V-B}3}Subject-Adaptive Normalisation}{3}{subsubsection.5.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {V-B}4}Conformal Prediction with APS}{3}{subsubsection.5.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Evaluation Protocols}{3}{section.6}\protected@file@percent }
+\newlabel{sec:protocols}{{VI}{3}{Evaluation Protocols}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Experimental Results}{3}{section.7}\protected@file@percent }
+\newlabel{sec:results}{{VII}{3}{Experimental Results}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}5-Fold CV: Baseline vs.\ Proposed}{3}{subsection.7.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces 5-Fold CV Results (Acc = mean\,$\pm $\,std, Macro-F1 = mean). All features unless noted.}}{3}{table.caption.2}\protected@file@percent }
+\newlabel{tab:main}{{I}{3}{5-Fold CV Results (Acc = mean\,$\pm $\,std, Macro-F1 = mean). All features unless noted}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Comparative Analysis: Three-Algorithm Baseline}{3}{subsection.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Comparative bar chart with standard deviation error bars across 5 folds. Grey: shallow classifiers. Orange: individual-channel ResNet1D variants. Red: proposed 4-channel ResNet1D fusion. Dashed line: 3-class chance baseline (33.3\,\%).}}{4}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:compare}{{2}{4}{Comparative bar chart with standard deviation error bars across 5 folds. Grey: shallow classifiers. Orange: individual-channel ResNet1D variants. Red: proposed 4-channel ResNet1D fusion. Dashed line: 3-class chance baseline (33.3\,\%)}{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Best-achievable accuracy under three evaluation protocols, highlighting the stark impact of distributional shift on model performance.}}{4}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:protocols}{{3}{4}{Best-achievable accuracy under three evaluation protocols, highlighting the stark impact of distributional shift on model performance}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Evaluation Protocol Sensitivity}{4}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Confusion Matrix Analysis}{4}{subsection.7.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Normalised confusion matrices. Left: RF (Algorithm-1, 95.4\,\%). Right: ResNet1D Fused (80.5\,\%). Most confusion occurs between the two high-load conditions (2-back / 3-back).}}{4}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:confusion}{{4}{4}{Normalised confusion matrices. Left: RF (Algorithm-1, 95.4\,\%). Right: ResNet1D Fused (80.5\,\%). Most confusion occurs between the two high-load conditions (2-back / 3-back)}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-E}}Conformal Prediction Results}{4}{subsection.7.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces APS coverage--efficiency trade-off. The average prediction set size remains 3 across all $\alpha $ values, indicating that the conformal predictor is correctly reporting maximal uncertainty on data drawn from a shifted distribution.}}{4}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:conformal}{{5}{4}{APS coverage--efficiency trade-off. The average prediction set size remains 3 across all $\alpha $ values, indicating that the conformal predictor is correctly reporting maximal uncertainty on data drawn from a shifted distribution}{figure.caption.6}{}}
+\citation{finn2017model}
+\bibstyle{IEEEtran}
+\bibdata{references}
+\bibcite{strang2014ht}{1}
+\bibcite{hart1988development}{2}
+\bibcite{maus2022}{3}
+\bibcite{gjoreski2017monitoring}{4}
+\bibcite{zander2016towards}{5}
+\bibcite{zhang2019hierarchical}{6}
+\bibcite{studer2019classifying}{7}
+\bibcite{sarkar2020self}{8}
+\bibcite{hoarfrost2022}{9}
+\bibcite{vovk2005algorithmic}{10}
+\bibcite{angelopoulos2021gentle}{11}
+\bibcite{romano2020classification}{12}
+\bibcite{lu2022fair}{13}
+\bibcite{finn2017model}{14}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Discussion}{5}{section.8}\protected@file@percent }
+\newlabel{sec:discussion}{{VIII}{5}{Discussion}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}Why Does Random Forest Outperform ResNet1D?}{5}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}When Does Feature Engineering Fail?}{5}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-C}}Conformal Prediction as a Deployment Safety Mechanism}{5}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-D}}Sensor Selection for Wearables}{5}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion}{5}{section.9}\protected@file@percent }
+\newlabel{sec:conclusion}{{IX}{5}{Conclusion}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{References}{5}{section*.7}\protected@file@percent }
+\gdef \@abspage@last{5}
